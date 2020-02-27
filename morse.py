@@ -59,7 +59,8 @@ class Message():
         self.dictionary = dictionary
         self.output_string = ''
 
-    def get_valid_input(self, message):
+    @classmethod
+    def get_valid_input(cls, message):
         """
         Return string from input, regardless of type(message)
         """
@@ -69,7 +70,8 @@ class Message():
             input_string = str(message)
         return input_string
 
-    def at_end(self, count, list_of_items):
+    @classmethod
+    def at_end(cls, count, list_of_items):
         """
         Check whether a loop has reached the last item in an interable
         """
