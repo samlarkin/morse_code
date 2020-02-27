@@ -75,9 +75,9 @@ class Message():
             at_end = True
         return at_end
 
-    def write(self, filepath, content):
+    def write(self, filepath):
         with open(filepath, 'w+') as f:
-            f.write(content)
+            f.write(self.input_string)
 
 
 class Text(Message):
