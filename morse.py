@@ -90,11 +90,3 @@ class Morse(Message):
         self.output_string = ''.join(working_list)  
         print(self.output_string)
         return Text(self.output_string, self.dictionary)
-
-    def generateAudio(self, dot_length):
-        # dot_length == duration of a single 'dot' in milliseconds
-        dot_length = int(dot_length)
-        dash_length = 3 * dot_length
-        gap_in_letter = dot_length
-        gap_in_word = dash_length
-        gap_in_phrase = 7 * dot_length
