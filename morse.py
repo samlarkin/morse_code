@@ -2,8 +2,9 @@ import string
 import os
 import json
 
+
 class Dictionary(object):
-    def __init__(self,filepath):
+    def __init__(self, filepath):
         self.filepath = filepath
         self.data = json.load(open(self.filepath))
 
@@ -29,6 +30,7 @@ class Dictionary(object):
             output = [morse, None, False]
         return output
 
+
 class Message(object):
     def __init__(self, message, dictionary):
         self.input_string = self.getValidInput(message)
@@ -39,7 +41,7 @@ class Message(object):
             input_string = message
         else:
             input_string = str(message)
-        return input_string    
+        return input_string
 
     def atEnd(self, count, list_of_items):
         if count < len(list_of_items):
@@ -50,6 +52,7 @@ class Message(object):
     def write(self, filepath, content):
         with open(filepath, 'w+') as f:
             f.write(content)
+
 
 class Text(Message):
     def encode(self):
@@ -63,12 +66,13 @@ class Text(Message):
                 working_list.append(self.dictionary.data[char])
             else:
                 raise ValueError('Invalid character in message '
-                                 '(no match found in dictionary)')                                
+                                 '(no match found in dictionary)')
             if not self.atEnd(count, input_list):
                 working_list.append(' ')
         self.output_string = ''.join(working_list)
         print(self.output_string)
         return Morse(self.output_string, self.dictionary)
+
 
 class Morse(Message):
     def decode(self):
@@ -87,6 +91,6 @@ class Morse(Message):
                                      '(no match found in dictionary).')
             if not self.atEnd(count, input_words):
                 working_list.append(' ')
-        self.output_string = ''.join(working_list)  
+        self.output_string = ''.join(working_list)
         print(self.output_string)
         return Text(self.output_string, self.dictionary)
