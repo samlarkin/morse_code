@@ -1,0 +1,7 @@
+### JupyterNotebooks ###
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+### Python ###
+*.pyc
+*/__pycache__/*
