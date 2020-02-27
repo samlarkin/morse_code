@@ -21,7 +21,7 @@ class Dictionary():
 
     def valid_char(self, char):
         """
-        Determine whether a character is a valid member of the dictionary
+        Determine whether a character is a valid dictionary member
         """
         if char in self.data.keys():
             valid = True
@@ -35,7 +35,7 @@ class Dictionary():
 
     def valid_morse(self, morse):
         """
-        Determine whether a Morse code character is a valid member of the dictionary
+        Determine whether a Morse code character is a valid dictionary member
         """
         if morse in self.data.values():
             for key, value in self.data.items():
