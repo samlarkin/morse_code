@@ -51,7 +51,7 @@ class Message():
     Message class
 
     Message objects are either text or Morse code messages.
-    
+
     message argument should be a string input.
 
     dictionary argument should be a Dictionary object.
