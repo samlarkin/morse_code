@@ -1,9 +1,24 @@
+"""
+morse.py
+author: Sam Larkin
+url: https://github.com/samlarkin/morse_code
+
+Module written as a learning exercise.
+
+Encodes text to Morse code and vice versa.
+"""
 import string
-import os
 import json
 
 
-class Dictionary(object):
+class Dictionary():
+    """
+        Dictionary class
+
+        Creates a Dictionary object from data stored on disk.
+
+        Dictionary data on disk is stored in json format.
+    """
     def __init__(self, filepath):
         self.filepath = filepath
         self.data = json.load(open(self.filepath))
@@ -31,10 +46,20 @@ class Dictionary(object):
         return output
 
 
-class Message(object):
+class Message():
+    """
+    Message class
+
+    Message objects are either text or Morse code messages.
+    
+    message argument should be a string input.
+
+    dictionary argument should be a Dictionary object.
+    """
     def __init__(self, message, dictionary):
         self.input_string = self.getValidInput(message)
         self.dictionary = dictionary
+        self.output_string = ''
 
     def getValidInput(self, message):
         if isinstance(message, str):
@@ -45,9 +70,10 @@ class Message(object):
 
     def atEnd(self, count, list_of_items):
         if count < len(list_of_items):
-            return False
+            at_end = False
         else:
-            return True
+            at_end = True
+        return at_end
 
     def write(self, filepath, content):
         with open(filepath, 'w+') as f:
@@ -55,6 +81,13 @@ class Message(object):
 
 
 class Text(Message):
+    """
+    Text class (subclass of Message class)
+
+    Stores text in a Message object.
+
+    Can be encoded to Morse code.
+    """
     def encode(self):
         input_list = list(self.input_string)
         working_list = []
@@ -75,6 +108,13 @@ class Text(Message):
 
 
 class Morse(Message):
+    """
+    Morse class (subclass of Message class)
+
+    Stores Morse code in a Message object.
+
+    Can be decoded to plain text.
+    """
     def decode(self):
         input_words = self.input_string.split('  ')
         working_list = []
