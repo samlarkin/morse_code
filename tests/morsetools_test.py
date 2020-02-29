@@ -1,4 +1,4 @@
-import morsetools
+import ../morsetools
 import os
 
 wd = os.getcwd()
